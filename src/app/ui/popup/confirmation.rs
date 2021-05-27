@@ -67,7 +67,7 @@ impl ConfirmMenu {
 
     fn handle_key(&mut self, key: KeyEvent, ctx: &Context) {
         match key.code {
-            KeyCode::Left => {
+            KeyCode::Left | KeyCode::BackTab => {
                 if self.focus_index == 0 {
                     self.focus_index = 1;
                 } else {
@@ -77,7 +77,7 @@ impl ConfirmMenu {
                 self.cancel_button.set_selected(self.focus_index == 0);
                 self.confirm_button.set_selected(self.focus_index == 1);
             },
-            KeyCode::Right => {
+            KeyCode::Right | KeyCode::Tab => {
                 self.focus_index += 1;
                 self.focus_index %= 2;
 
